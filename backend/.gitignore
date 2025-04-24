@@ -1,0 +1,8 @@
+node_modules
+medias
+
+# Environment files
+.env.local
+
+# Zip files
+*.zip
