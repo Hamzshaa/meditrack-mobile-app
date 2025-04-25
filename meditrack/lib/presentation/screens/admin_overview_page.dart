@@ -20,7 +20,7 @@ class AdminOverviewPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: null, // Removed title
+        title: null,
         centerTitle: false,
         elevation: 0,
         shape: const RoundedRectangleBorder(
@@ -143,7 +143,6 @@ class AdminOverviewPage extends ConsumerWidget {
   ) {
     return CustomScrollView(
       slivers: [
-        // New Overview Header Section
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
           sliver: SliverToBoxAdapter(
@@ -173,7 +172,6 @@ class AdminOverviewPage extends ConsumerWidget {
             ),
           ),
         ),
-        // Existing Content
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
           sliver: SliverToBoxAdapter(
@@ -226,7 +224,7 @@ class AdminOverviewPage extends ConsumerWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
-          childAspectRatio: 1.2,
+          childAspectRatio: 0.8,
           children: [
             AdminSummaryCard(
               icon: Icons.store_rounded,

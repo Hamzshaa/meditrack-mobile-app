@@ -188,12 +188,13 @@ class _HomePageState extends ConsumerState<HomePage> {
       AsyncValue<List<Medication>> asyncValue, bool isSearchEmpty) {
     return asyncValue.when(
       data: (medications) {
-        if ((!_initialLoadAttempted && medications.isEmpty) ||
-            (isSearchEmpty && _initialLoadAttempted && medications.isEmpty)) {
+        if (!_initialLoadAttempted || isSearchEmpty) {
           return const HomeEmptyStateSliver(type: EmptyStateType.prompt);
-        } else if (!isSearchEmpty && medications.isEmpty) {
+        } else if (medications.isEmpty) {
           return HomeEmptyStateSliver(
-              type: EmptyStateType.noResults, query: _searchController.text);
+            type: EmptyStateType.noResults,
+            query: _searchController.text,
+          );
         } else {
           return MedicationListSliver(
             medications: medications,

@@ -22,7 +22,7 @@ final sharedPreferencesProvider =
 );
 
 typedef SharedPreferencesRef = AutoDisposeFutureProviderRef<SharedPreferences>;
-String _$themeNotifierHash() => r'482c4a296a00406fc789fd18eb59ce039e2807c1';
+String _$themeNotifierHash() => r'f8a3fdfa053648ad8cee3af10550040077e87fc7';
 
 /// See also [ThemeNotifier].
 @ProviderFor(ThemeNotifier)

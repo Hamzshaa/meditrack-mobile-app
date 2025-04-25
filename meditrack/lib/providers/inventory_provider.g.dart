@@ -41,7 +41,7 @@ final inventoryRepositoryProvider =
 
 typedef InventoryRepositoryRef = AutoDisposeProviderRef<InventoryRepository>;
 String _$expiringMedicationsHash() =>
-    r'03dce7f10f82ebdba1aebdbee59fe122ae10309b';
+    r'c1384b6d34c45e474116150df035977a07104251';
 
 /// See also [expiringMedications].
 @ProviderFor(expiringMedications)

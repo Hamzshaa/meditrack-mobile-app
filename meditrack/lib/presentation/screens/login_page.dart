@@ -16,10 +16,8 @@ class LoginPage extends ConsumerStatefulWidget {
 
 class _LoginPageState extends ConsumerState<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController =
-      TextEditingController(text: "trident32000@gmail.com");
-  final TextEditingController _passwordController =
-      TextEditingController(text: "12345678");
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {

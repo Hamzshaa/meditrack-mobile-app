@@ -1,2 +1,2 @@
-const String apiBaseUrl = 'http://localhost:5000/api/v1';
-const String mediaBaseUrl = 'http://localhost:5000';
+const String apiBaseUrl = 'https://meditrack.birtucansoftware.com/api/v1';
+const String mediaBaseUrl = 'https://meditrack.birtucansoftware.com';

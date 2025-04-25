@@ -62,33 +62,15 @@ String _getTokenOrThrow(ref) {
 class MedicationsNotifier extends _$MedicationsNotifier {
   Future<List<Medication>> _fetchMedicationsByLocation(
     String searchQuery,
-    AsyncValue<Position> locationState,
+    Position location,
   ) async {
-    final Position position;
-
-    if (locationState is AsyncData<Position>) {
-      position = locationState.value;
-    } else if (locationState is AsyncLoading) {
-      await Future.delayed(const Duration(milliseconds: 100));
-      final updatedLocationState = ref.read(currentLocationProvider);
-      if (updatedLocationState is AsyncData<Position>) {
-        position = updatedLocationState.value;
-      } else {
-        throw Exception("Location data is still loading or unavailable.");
-      }
-    } else if (locationState is AsyncError) {
-      throw locationState.error ?? Exception("Unknown location error");
-    } else {
-      throw Exception("Location data is not available.");
-    }
-
     final medicationRepo = ref.read(medicationRepositoryProvider);
 
     try {
       final medications = await medicationRepo.searchMedication(
         searchQuery: searchQuery,
-        lat: position.latitude,
-        lon: position.longitude,
+        lat: location.latitude,
+        lon: location.longitude,
       );
       return medications;
     } catch (e) {
@@ -98,17 +80,22 @@ class MedicationsNotifier extends _$MedicationsNotifier {
 
   @override
   Future<List<Medication>> build() async {
-    final locationState = ref.watch(currentLocationProvider);
+    final position = await ref.read(currentLocationProvider.future);
 
-    return await _fetchMedicationsByLocation('', locationState);
+    return await _fetchMedicationsByLocation('', position);
   }
 
   Future<void> search(String searchQuery) async {
     state = const AsyncValue.loading();
 
-    final locationState = ref.read(currentLocationProvider);
-    state = await AsyncValue.guard(
-        () => _fetchMedicationsByLocation(searchQuery, locationState));
+    try {
+      final position = await ref.read(currentLocationProvider.future);
+
+      state = await AsyncValue.guard(
+          () => _fetchMedicationsByLocation(searchQuery, position));
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+    }
   }
 
   Future<Medication> getMedicationById(int medicationId) async {

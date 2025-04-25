@@ -20,7 +20,7 @@ class AppDrawer extends ConsumerWidget {
         _getUserInitials('${currentUser.first_name} ${currentUser.last_name}');
 
     return Drawer(
-      width: MediaQuery.of(context).size.width * 0.65,
+      width: MediaQuery.of(context).size.width * 0.75,
       child: Column(
         children: [
           UserAccountsDrawerHeader(

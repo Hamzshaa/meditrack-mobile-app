@@ -7,8 +7,12 @@
     <!-- Background Location Permission (Only if truly needed) -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
-        android:label="meditrack"
+        android:usesCleartextTraffic="true"
+        android:label="MediTrack"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

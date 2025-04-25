@@ -348,7 +348,7 @@ class PharmacyOverviewPage extends ConsumerWidget {
         physics: const NeverScrollableScrollPhysics(),
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 12.0,
-        childAspectRatio: 1.1,
+        childAspectRatio: 0.8,
         children: [
           StatCard(
             icon: Icons.medication_rounded,

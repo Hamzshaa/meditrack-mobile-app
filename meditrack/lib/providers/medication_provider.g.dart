@@ -77,7 +77,7 @@ final medicationCategoryRepositoryProvider =
 typedef MedicationCategoryRepositoryRef
     = AutoDisposeProviderRef<MedicationCategoryRepository>;
 String _$medicationsNotifierHash() =>
-    r'e92b8b4be7f6e14973662e694f274a10cd70c1f9';
+    r'1c49668ef23d39275a2f8fc07ef530736d052f99';
 
 /// See also [MedicationsNotifier].
 @ProviderFor(MedicationsNotifier)
